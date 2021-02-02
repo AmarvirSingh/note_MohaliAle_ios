@@ -118,10 +118,10 @@ class CategoryTVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "category_cell", for: indexPath)
 
         cell.textLabel?.text = category[indexPath.row].catName
-        cell.textLabel?.textColor = .lightGray
+        cell.textLabel?.textColor = .cyan
         cell.detailTextLabel?.textColor = .lightGray
         cell.detailTextLabel?.text = "\(category[indexPath.row].notes?.count ?? 0)"
-        cell.imageView?.image = UIImage(systemName: "category")
+        cell.imageView?.image = UIImage(systemName: "folder")
         cell.selectionStyle = .none
 
     
@@ -165,14 +165,19 @@ class CategoryTVC: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        let destination = segue.destination as! NoteTVC
+        if let indexPath = tableView.indexPathForSelectedRow{
+            destination.selectedCategory = category[indexPath.row]
     }
-    */
+    
 
+}
 }

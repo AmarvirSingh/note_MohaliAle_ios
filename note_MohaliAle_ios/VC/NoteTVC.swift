@@ -46,7 +46,7 @@ class NoteTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return notes.count 
+        return notes.count
     }
 
     /*
@@ -102,11 +102,9 @@ class NoteTVC: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         
-        let destination = segue.destination as! NoteTVC
-        if let indexPath = tableView.indexPathForSelectedRow{
-            destination.selectedCategory = category[indexPath.row]
+       
         }
     }
     
 
-}
+
