@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BFE971725C9758600600C52 /* NoteTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFE971625C9758600600C52 /* NoteTVC.swift */; };
 		EECCA3E425C94762009E3554 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA3E325C94762009E3554 /* AppDelegate.swift */; };
 		EECCA3E625C94762009E3554 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA3E525C94762009E3554 /* SceneDelegate.swift */; };
 		EECCA3E825C94762009E3554 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA3E725C94762009E3554 /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5BFE971625C9758600600C52 /* NoteTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTVC.swift; sourceTree = "<group>"; };
 		EECCA3E025C94762009E3554 /* note_MohaliAle_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = note_MohaliAle_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECCA3E325C94762009E3554 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EECCA3E525C94762009E3554 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				EECCA41625C94958009E3554 /* CategoryTVC.swift */,
+				5BFE971625C9758600600C52 /* NoteTVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				EECCA3E825C94762009E3554 /* ViewController.swift in Sources */,
 				EECCA3E425C94762009E3554 /* AppDelegate.swift in Sources */,
 				EECCA41725C94958009E3554 /* CategoryTVC.swift in Sources */,
+				5BFE971725C9758600600C52 /* NoteTVC.swift in Sources */,
 				EECCA3EE25C94762009E3554 /* note_MohaliAle_ios.xcdatamodeld in Sources */,
 				EECCA3E625C94762009E3554 /* SceneDelegate.swift in Sources */,
 			);

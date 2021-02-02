@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,6 +31,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="iUW-hY-v3f" kind="presentation" id="7NJ-q1-2Xs"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -50,6 +54,44 @@
             </objects>
             <point key="canvasLocation" x="2044.9275362318842" y="133.92857142857142"/>
         </scene>
+        <!--NoteTVC-->
+        <scene sceneID="1jY-wd-F4Z">
+            <objects>
+                <tableViewController id="iUW-hY-v3f" customClass="NoteTVC" customModule="note_MohaliAle_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HbO-kM-Eb0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="k2G-YU-YhA">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k2G-YU-YhA" id="Sue-TY-3jA">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iUW-hY-v3f" id="VFO-sC-aAM"/>
+                            <outlet property="delegate" destination="iUW-hY-v3f" id="PLW-6T-Oua"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="trash" image="trash.fill" catalog="system" width="323.5" id="Wnl-wT-wfZ"/>
+                        <barButtonItem title="write" image="rectangle.and.pencil.and.ellipsis" catalog="system" width="359.5" id="hwi-Q6-b7T"/>
+                        <barButtonItem title="move" image="tray.and.arrow.down.fill" catalog="system" width="203.5" id="4rw-Ho-pxn"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="moveBTN" destination="4rw-Ho-pxn" id="45r-Jp-a6O"/>
+                        <outlet property="trashBTN" destination="Wnl-wT-wfZ" id="e1a-HA-WUO"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1gh-g2-uKc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2890" y="134"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="d58-1Y-ral">
             <objects>
@@ -69,4 +111,12 @@
             <point key="canvasLocation" x="1134.7826086956522" y="133.92857142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="rectangle.and.pencil.and.ellipsis" catalog="system" width="128" height="81"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
+        <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
