@@ -10,7 +10,7 @@ import CoreData
 
 class MoveToTVC: UIViewController {
 
-    var folders = [Category]()
+    var folderCategories = [Category]()
     var selectedNotes: [Note]? {
         didSet {
             loadFolders()
@@ -35,7 +35,7 @@ class MoveToTVC: UIViewController {
         request.predicate = folderPredicate
         
         do {
-            folders = try context.fetch(request)
+            folderCategories = try context.fetch(request)
         } catch {
             print("Error fetching data \(error.localizedDescription)")
         }
@@ -51,12 +51,12 @@ class MoveToTVC: UIViewController {
 
 //extension MoveToTVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return folders.count
+        return folderCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell  = UITableViewCell(style: .default, reuseIdentifier: "")
-        cell.textLabel?.text = folders[indexPath.row].catName
+        cell.textLabel?.text = folderCategories[indexPath.row].catName
         cell.backgroundColor = .darkGray
         cell.textLabel?.textColor = .lightGray
         cell.textLabel?.tintColor = .lightGray
@@ -64,10 +64,10 @@ class MoveToTVC: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alert = UIAlertController(title: "Move to \(folders[indexPath.row].catName!)", message: "Are you sure?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Move to \(folderCategories[indexPath.row].catName!)", message: "Are you sure?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Move", style: .default) { (action) in
             for note in self.selectedNotes! {
-                note.parentCategory? = self.folders[indexPath.row]
+                note.parentCategory? = self.folderCategories[indexPath.row]
             }
             // dismiss the vc
             self.performSegue(withIdentifier: "dismissMoveToVC", sender: self)
