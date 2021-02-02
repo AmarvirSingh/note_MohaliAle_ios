@@ -199,6 +199,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOw-uT-YBe">
+                                <rect key="frame" x="151" y="636" width="101" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show Location"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pHf-3n-OVX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
