@@ -118,7 +118,6 @@
 				EECCA3EF25C94770009E3554 /* Assets.xcassets */,
 				EECCA3F125C94770009E3554 /* LaunchScreen.storyboard */,
 				EECCA3F425C94770009E3554 /* Info.plist */,
-				2DB5921325C9D032009F8495 /* MoveToTVC.swift */,
 			);
 			path = note_MohaliAle_ios;
 			sourceTree = "<group>";
@@ -147,6 +146,7 @@
 				EECCA41625C94958009E3554 /* CategoryTVC.swift */,
 				5BFE971625C9758600600C52 /* NoteTVC.swift */,
 				2DB5922025C9D06F009F8495 /* NotesVC.swift */,
+				2DB5921325C9D032009F8495 /* MoveToTVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
