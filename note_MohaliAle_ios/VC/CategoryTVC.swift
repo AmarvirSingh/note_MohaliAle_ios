@@ -7,12 +7,22 @@
 //
 
 import UIKit
-
+import  CoreData
 class CategoryTVC: UITableViewController {
 
+    
+    var category = [Category]()
+   
+   // context
+   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        loadCategory()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -20,6 +30,25 @@ class CategoryTVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    
+    
+    //  MARK: Load category func
+    func loadCategory()
+    {
+        let request : NSFetchRequest<Category> = Category.fetchRequest()
+        
+        do{
+            category = try context.fetch(request)
+        }
+        catch
+        {
+            print("error loading folders \(error.localizedDescription)")
+        }
+        tableView.reloadData()
+    }
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
