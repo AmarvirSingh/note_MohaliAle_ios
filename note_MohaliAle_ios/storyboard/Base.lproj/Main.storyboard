@@ -99,6 +99,28 @@
             </objects>
             <point key="canvasLocation" x="2890" y="848"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="VP4-x3-x5u">
+            <objects>
+                <viewController id="nEc-9a-hGo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hsG-1U-1xY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AGN-wf-Dg7">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4sG-WH-A6Q"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7gP-hX-RIk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WXd-cr-c3p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3769.5652173913045" y="847.76785714285711"/>
+        </scene>
         <!--NoteTVC-->
         <scene sceneID="1jY-wd-F4Z">
             <objects>
@@ -203,6 +225,9 @@
                                 <rect key="frame" x="151" y="636" width="101" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Show Location"/>
+                                <connections>
+                                    <segue destination="nEc-9a-hGo" kind="show" id="dtn-N7-SHV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pHf-3n-OVX"/>
