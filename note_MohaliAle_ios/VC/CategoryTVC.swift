@@ -30,7 +30,59 @@ class CategoryTVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    // MARK:  ADD category button IB action
+    @IBAction func addCategory(_ sender: UIBarButtonItem)
+    {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "ADD NEW CATEGORY ", message: "give name ", preferredStyle: .alert)
+        let addAction = UIAlertAction(title: "ADD", style: .default)
+        {(action) in
+            
+            let categoryNames = self.category.map{$0.catName}
+            guard !categoryNames.contains(textField.text) else {self.showAlert(); return}
+            let newCategory = Category(context: self.context)
+            newCategory.catName = textField.text!
+            self.category.append(newCategory)
+            self.saveCategory()
+        }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            // chnge the color of cancel button
+            cancelAction.setValue(UIColor.orange, forKey: "titleTextColor")
+            
+            alert.addAction(addAction)
+            alert.addAction(cancelAction)
+        alert.addTextField
+        {(field) in
+            textField = field
+            textField.placeholder = "category name"
+        }
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
     
+    func showAlert()
+    {
+        let alert = UIAlertController(title: "NAME TAKEN ", message: "CHOOSE ANOTHER NAME", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "ok", style: .cancel, handler: nil )
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    // MARK: save category
+    
+    func saveCategory()
+    {
+        do
+        {
+            try context.save()
+            tableView.reloadData()
+        }
+        catch{
+            print(error )
+        }
+        
+        
+    }
     
     //  MARK: Load category func
     func loadCategory()

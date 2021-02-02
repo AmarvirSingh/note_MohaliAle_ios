@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--CategoryTVC-->
         <scene sceneID="iIL-Cv-grP">
             <objects>
-                <tableViewController id="hGL-QA-vW4" sceneMemberID="viewController">
+                <tableViewController id="hGL-QA-vW4" customClass="CategoryTVC" customModule="note_MohaliAle_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3oq-7U-DEg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="R52-Jx-jEO">
-                        <barButtonItem key="leftBarButtonItem" title="New Category" id="fFz-8z-wgo"/>
+                        <barButtonItem key="leftBarButtonItem" title="New Category" id="fFz-8z-wgo">
+                            <connections>
+                                <action selector="addCategory:" destination="hGL-QA-vW4" id="Xif-f4-qVD"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="4qX-Ga-HHu"/>
                     </navigationItem>
                 </tableViewController>
