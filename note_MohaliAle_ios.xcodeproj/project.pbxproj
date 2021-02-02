@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DB5921425C9D032009F8495 /* MoveToTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB5921325C9D032009F8495 /* MoveToTVC.swift */; };
+		2DB5922125C9D06F009F8495 /* NotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DB5922025C9D06F009F8495 /* NotesVC.swift */; };
 		5BFE971725C9758600600C52 /* NoteTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFE971625C9758600600C52 /* NoteTVC.swift */; };
 		EECCA3E425C94762009E3554 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA3E325C94762009E3554 /* AppDelegate.swift */; };
 		EECCA3E625C94762009E3554 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECCA3E525C94762009E3554 /* SceneDelegate.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2DB5921325C9D032009F8495 /* MoveToTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveToTVC.swift; sourceTree = "<group>"; };
+		2DB5922025C9D06F009F8495 /* NotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesVC.swift; sourceTree = "<group>"; };
 		5BFE971625C9758600600C52 /* NoteTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTVC.swift; sourceTree = "<group>"; };
 		EECCA3E025C94762009E3554 /* note_MohaliAle_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = note_MohaliAle_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EECCA3E325C94762009E3554 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 				EECCA3EF25C94770009E3554 /* Assets.xcassets */,
 				EECCA3F125C94770009E3554 /* LaunchScreen.storyboard */,
 				EECCA3F425C94770009E3554 /* Info.plist */,
+				2DB5921325C9D032009F8495 /* MoveToTVC.swift */,
 			);
 			path = note_MohaliAle_ios;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 			children = (
 				EECCA41625C94958009E3554 /* CategoryTVC.swift */,
 				5BFE971625C9758600600C52 /* NoteTVC.swift */,
+				2DB5922025C9D06F009F8495 /* NotesVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -294,6 +300,8 @@
 			files = (
 				EECCA3E825C94762009E3554 /* ViewController.swift in Sources */,
 				EECCA3E425C94762009E3554 /* AppDelegate.swift in Sources */,
+				2DB5922125C9D06F009F8495 /* NotesVC.swift in Sources */,
+				2DB5921425C9D032009F8495 /* MoveToTVC.swift in Sources */,
 				EECCA41725C94958009E3554 /* CategoryTVC.swift in Sources */,
 				5BFE971725C9758600600C52 /* NoteTVC.swift in Sources */,
 				EECCA3EE25C94762009E3554 /* note_MohaliAle_ios.xcdatamodeld in Sources */,
