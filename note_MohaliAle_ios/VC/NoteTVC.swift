@@ -9,11 +9,10 @@
 import UIKit
 import CoreData
 
-class NoteTVC: UITableViewController {
+class NoteTVC: UITableViewController, UISearchBarDelegate {
 
-    @IBOutlet weak var trashBTN: UIBarButtonItem!
+    @IBOutlet weak var TrashBTN: UIBarButtonItem!
     @IBOutlet weak var moveBTN: UIBarButtonItem!
-    
     // CREATE notes
     var notes = [Note]()
     var selectedCategory: Category?
@@ -26,10 +25,14 @@ class NoteTVC: UITableViewController {
     // create context
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    let searchController = UISearchController(searchResultsController: nil)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        showSearchBar()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -104,7 +107,20 @@ class NoteTVC: UITableViewController {
         
        
         }
+   
+    //MARK: - showing  search bar function
+    func showSearchBar() {
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Note"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        searchController.searchBar.searchTextField.textColor = .lightGray
     }
+
+
+
+}
     
 
 
