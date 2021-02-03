@@ -40,6 +40,8 @@ class NotesVC: UIViewController {
     // boolean value to check if the note is editable or the new note
     var editNote: Bool = false
     
+    var locationBool: Bool = false
+    
     // creating an instance of NoteTVC - noteTVCInstance
     
     weak var noteTVCInstance : NoteTVC!
@@ -59,7 +61,7 @@ class NotesVC: UIViewController {
         self.noteImage.addGestureRecognizer(tapGesture)
 
         
-            showImg()
+        showImg()
         titleTextField.text = selectedNotes?.noteTitle
         noteTextView.text = selectedNotes?.noteMessage
         
@@ -68,8 +70,10 @@ class NotesVC: UIViewController {
         // set the test of the button to show location if editNote is true
         if editNote == true{
             showLocationBtn.setTitle("Show Location", for: [])
+            locationBool = true
         }else{
             showLocationBtn.setTitle("Save Location", for: [])
+            locationBool = false
         }
         
         
@@ -95,6 +99,29 @@ class NotesVC: UIViewController {
 
  */
  }
+    
+    
+    
+   //MARK: Show location button clicked
+    
+    @IBAction func showLocationPressed(_ sender: Any) {
+        if locationBool ==  true {
+            performSegue(withIdentifier: "mapSegue", sender: self)
+        
+        }else{
+            
+        }
+        
+        
+    }
+    
+    
+    //MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        
+    }
     
     
     

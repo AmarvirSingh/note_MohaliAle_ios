@@ -97,10 +97,10 @@
             </objects>
             <point key="canvasLocation" x="2903" y="408"/>
         </scene>
-        <!--View Controller-->
+        <!--MapVC-->
         <scene sceneID="VP4-x3-x5u">
             <objects>
-                <viewController id="nEc-9a-hGo" sceneMemberID="viewController">
+                <viewController id="nEc-9a-hGo" customClass="MapVC" customModule="note_MohaliAle_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hsG-1U-1xY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,7 +233,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Show Location"/>
                                 <connections>
-                                    <segue destination="nEc-9a-hGo" kind="show" id="dtn-N7-SHV"/>
+                                    <action selector="showLocationPressed:" destination="5HG-1C-OvN" eventType="touchUpInside" id="7MV-sC-8jL"/>
+                                    <segue destination="nEc-9a-hGo" kind="show" identifier="mapSegue" id="dtn-N7-SHV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJR-gC-bXN">
