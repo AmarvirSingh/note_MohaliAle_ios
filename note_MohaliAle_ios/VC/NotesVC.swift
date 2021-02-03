@@ -42,6 +42,10 @@ class NotesVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        titleTextField.text = selectedNotes?.noteTitle
+        noteTextView.text = selectedNotes?.noteMessage
+        
     }
     
     
