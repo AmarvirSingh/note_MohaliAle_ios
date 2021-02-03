@@ -37,6 +37,10 @@ class NotesVC: UIViewController {
     // boolean value to check if the note is editable or the new note
     var editNote: Bool = false
     
+    // creating an instance of NoteTVC - noteTVCInstance
+    
+    weak var noteTVCInstance : NoteTVC!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +50,14 @@ class NotesVC: UIViewController {
         titleTextField.text = selectedNotes?.noteTitle
         noteTextView.text = selectedNotes?.noteMessage
         
+    }
+    
+    // this will call whenever view disappear
+    override func viewWillDisappear(_ animated: Bool) {
+        if editNote{
+            noteTVCInstance.deleteNote(note : Note) // first delete the mote if editing enabled
+        }
+        noteTVCInstance.updateNote(title: titleTextField.text! , message: noteTextView.text!) // then update the note core data
     }
     
     
