@@ -56,7 +56,7 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
     
     // define the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "note_cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TV_cell", for: indexPath)
         let note = notes[indexPath.row]
         cell.textLabel?.text = note.noteTitle
         cell.textLabel?.textColor = .lightGray
@@ -70,7 +70,25 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
-
+    //MARK: loading notes function
+    func loadNotes(predicate: NSPredicate? = nil) {
+        let request: NSFetchRequest<Note> = Note.fetchRequest()
+        let CategoryPredicate = NSPredicate(format: "parentFolder.name=%@", selectedCategory!.catName!)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        if let additionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [CategoryPredicate, additionalPredicate])
+        } else {
+            request.predicate = CategoryPredicate
+        }
+        
+        do {
+            notes = try context.fetch(request)
+        } catch {
+            print("Error loading notes \(error.localizedDescription)")
+        }
+        tableView.reloadData()
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

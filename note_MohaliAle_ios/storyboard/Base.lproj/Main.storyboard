@@ -130,7 +130,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="k2G-YU-YhA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TV_cell" id="k2G-YU-YhA">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k2G-YU-YhA" id="Sue-TY-3jA">
@@ -151,7 +151,11 @@
                     <navigationItem key="navigationItem" id="2ic-vo-qlM">
                         <rightBarButtonItems>
                             <barButtonItem title="MoveBTN" image="tray.and.arrow.down" catalog="system" landscapeImage="tray.and.arrow.down" id="2vW-bP-puI"/>
-                            <barButtonItem title="Write" image="rectangle.and.pencil.and.ellipsis" catalog="system" id="uVe-D8-kth"/>
+                            <barButtonItem title="Write" image="rectangle.and.pencil.and.ellipsis" catalog="system" id="uVe-D8-kth" userLabel="Item">
+                                <connections>
+                                    <segue destination="5HG-1C-OvN" kind="show" id="DGG-uy-6R4"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="trashBTN" image="trash.fill" catalog="system" id="0yw-vi-UGP"/>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -231,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8j-Bc-rLt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3769.5652173913045" y="133.92857142857142"/>
+            <point key="canvasLocation" x="4028" y="-157"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="d58-1Y-ral">
@@ -252,6 +256,9 @@
             <point key="canvasLocation" x="1134.7826086956522" y="133.92857142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="DGG-uy-6R4"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rectangle.and.pencil.and.ellipsis" catalog="system" width="128" height="81"/>
