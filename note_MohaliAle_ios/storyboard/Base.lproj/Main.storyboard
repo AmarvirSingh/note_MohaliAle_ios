@@ -76,7 +76,7 @@
             <objects>
                 <tableViewController id="1mn-d1-B3k" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3OV-wM-g2H">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -147,20 +147,12 @@
                             <outlet property="delegate" destination="iUW-hY-v3f" id="PLW-6T-Oua"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="TrashBTN" image="trash.fill" catalog="system" width="323.5" id="Wnl-wT-wfZ"/>
-                        <barButtonItem title="write" image="rectangle.and.pencil.and.ellipsis" catalog="system" width="359.5" id="hwi-Q6-b7T"/>
-                        <barButtonItem title="moveBTN" image="tray.and.arrow.down.fill" catalog="system" width="203.5" id="4rw-Ho-pxn">
-                            <connections>
-                                <segue destination="1mn-d1-B3k" kind="presentation" id="JvA-KV-TqP"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="2ic-vo-qlM">
                         <rightBarButtonItems>
                             <barButtonItem title="MoveBTN" image="tray.and.arrow.down" catalog="system" landscapeImage="tray.and.arrow.down" id="2vW-bP-puI"/>
                             <barButtonItem title="Write" image="rectangle.and.pencil.and.ellipsis" catalog="system" id="uVe-D8-kth"/>
-                            <barButtonItem title="TrashBTN" image="trash.fill" catalog="system" id="0yw-vi-UGP"/>
+                            <barButtonItem title="trashBTN" image="trash.fill" catalog="system" id="0yw-vi-UGP"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -265,7 +257,6 @@
         <image name="rectangle.and.pencil.and.ellipsis" catalog="system" width="128" height="81"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
         <image name="tray.and.arrow.down" catalog="system" width="128" height="109"/>
-        <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

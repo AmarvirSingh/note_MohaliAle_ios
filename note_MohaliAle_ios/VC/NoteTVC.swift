@@ -18,7 +18,7 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
     var selectedCategory: Category?
     {
         didSet {
-         //   loadNotes()
+         //   loadNotes
         }
     }
     
@@ -37,13 +37,14 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // self./Users/user191496/Documents/NoteFolderApp-Demo/NoteFolder App Demo/Base.lproj/LaunchScreen.storyboardnavigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        
         return 1
     }
 
@@ -52,15 +53,23 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
         return notes.count
     }
 
-    /*
+    
+    // define the cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "note_cell", for: indexPath)
+        let note = notes[indexPath.row]
+        cell.textLabel?.text = note.noteTitle
+        cell.textLabel?.textColor = .lightGray
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .darkGray
+        cell.selectedBackgroundView = backgroundView
+        
+    
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
