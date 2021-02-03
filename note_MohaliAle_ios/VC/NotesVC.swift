@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class NotesVC: UIViewController {
     
@@ -17,12 +18,32 @@ class NotesVC: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     
 
+    // MARK: Context and Array created
+    
+    var notes = [Note]()
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    
+    //MARK: crateing the variable if for selected note
+    
+    var selectedNotes : Note?{
+        didSet{
+            editNote = true
+        }
+    }
+    
+    
+    // boolean value to check if the note is editable or the new note
+    var editNote: Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
     
 
   
