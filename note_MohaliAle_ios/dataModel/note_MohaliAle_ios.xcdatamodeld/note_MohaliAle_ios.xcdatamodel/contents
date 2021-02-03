@@ -6,12 +6,15 @@
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
         <attribute name="noteImage" optional="YES" attributeType="Binary"/>
+        <attribute name="noteLat" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="noteLocAddress" optional="YES" attributeType="String"/>
+        <attribute name="noteLong" optional="YES" attributeType="String"/>
         <attribute name="noteMessage" optional="YES" attributeType="String"/>
         <attribute name="noteTitle" optional="YES" attributeType="String"/>
         <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="notes" inverseEntity="Category"/>
     </entity>
     <elements>
         <element name="Category" positionX="-63" positionY="-18" width="128" height="73"/>
-        <element name="Note" positionX="-54" positionY="0" width="128" height="103"/>
+        <element name="Note" positionX="-54" positionY="0" width="128" height="148"/>
     </elements>
 </model>

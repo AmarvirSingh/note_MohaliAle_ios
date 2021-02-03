@@ -8,15 +8,30 @@
 
 import UIKit
 import CoreData
-
-class NotesVC: UIViewController {
+import MapKit
+class NotesVC: UIViewController, CLLocationManagerDelegate {
+    
+    
+    // location variables
+    var locManager = CLLocationManager()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     //MARK: - outlets of ther view controller
     @IBOutlet weak var showLocationBtn: UIButton!
     @IBOutlet weak var noteImage: UIImageView!
     @IBOutlet weak var noteTextView: UITextView!
     @IBOutlet weak var titleTextField: UITextField!
-
+    @IBOutlet weak var addressLbl: UILabel!
+    
     
     let imagePicker = UIImagePickerController()
     
@@ -27,6 +42,8 @@ class NotesVC: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    var latitude:CLLocationDegrees!
+    var longitude:CLLocationDegrees!
     
     //MARK: crateing the variable if for selected note
     
@@ -79,7 +96,26 @@ class NotesVC: UIViewController {
         
         
         
+        // location manager things
+        
+        
+        // we give the delegate of locationManager to this class
+        locManager.delegate = self
+        
+        // accuracy of the location
+        locManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        // request the user for the location access
+        locManager.requestWhenInUseAuthorization()
+        
+        // start updating the location of the user
+        locManager.startUpdatingLocation()
+        
+        
+        
     }
+    
+    
     
     //MARK: view Will disaapear
     
@@ -88,7 +124,9 @@ class NotesVC: UIViewController {
          if editNote{
             noteTVCInstance.deleteNote(note: selectedNotes)
         }
-        noteTVCInstance.updateNote(title: selectedNotes?.noteTitle, message: selectedNotes?.noteMessage, img: selectedNotes?.noteImage)
+         
+          guard noteTextView.text != "" else {return}
+        noteTVCInstance.updateNote(title: selectedNotes?.noteTitle, message: selectedNotes?.noteMessage, img: selectedNotes?.noteImage, address: selectedNotes?.noteLocAddress, lat: selectedNotes?.noteLat, long: selectedNotes?.noteLong)
          
          
          // let it be commented for the time being we will check n the debug time
@@ -96,8 +134,8 @@ class NotesVC: UIViewController {
          if let png = self.getImage.image?.pngData(){
              saveImage(at: png)
          }
-
- */
+*/
+ 
  }
     
     
@@ -109,9 +147,68 @@ class NotesVC: UIViewController {
             performSegue(withIdentifier: "mapSegue", sender: self)
         
         }else{
+    
+
+            //MARK: Location maanager function
             
+            func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+                let location = locations[0]
+                
+                latitude = location.coordinate.latitude
+                longitude = location.coordinate.longitude
+                
+                
+                
+                CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+                    if error != nil {
+                        print(error!)
+                    } else {
+                        if let placemark = placemarks?[0] {
+                            
+                            var address = ""
+                            
+                            if placemark.subThoroughfare != nil {
+                                address += placemark.subThoroughfare! + " "
+                            }
+                            
+                            if placemark.thoroughfare != nil {
+                                address += placemark.thoroughfare! + "\n"
+                            }
+                            
+                            if placemark.subLocality != nil {
+                                address += placemark.subLocality! + "\n"
+                            }
+                            
+                            if placemark.subAdministrativeArea != nil {
+                                address += placemark.subAdministrativeArea! + "\n"
+                            }
+                            
+                            if placemark.postalCode != nil {
+                                address += placemark.postalCode! + "\n"
+                            }
+                            
+                            if placemark.country != nil {
+                                address += placemark.country! + "\n"
+                            }
+                            
+                            self.addressLbl.text = address
+                        }
+                    }
+                }
+                
+                
+            }
+            
+  
         }
         
+        
+    }
+    
+    
+    //MARK: Function to save location of the user and show that in the note pad
+    
+    func getLocation(){
         
     }
     
@@ -120,6 +217,11 @@ class NotesVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
+        //MARK: MAke Changes here in CLLocation 
+        
+        let destination = segue.destination as? MapVC
+       // destination?.latitude = selectedNotes?.noteLat
+       // destination?.longitude =  selectedNotes?.noteLong
         
     }
     
