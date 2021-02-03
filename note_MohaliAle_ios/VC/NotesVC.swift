@@ -53,13 +53,13 @@ class NotesVC: UIViewController {
     }
     
     // this will call whenever view disappear
-    override func viewWillDisappear(_ animated: Bool) {
+  /*  override func viewWillDisappear(_ animated: Bool) {
         if editNote{
             noteTVCInstance.deleteNote(note : Note) // first delete the mote if editing enabled
         }
         noteTVCInstance.updateNote(title: titleTextField.text! , message: noteTextView.text!) // then update the note core data
     }
-    
+    */
     
 
   

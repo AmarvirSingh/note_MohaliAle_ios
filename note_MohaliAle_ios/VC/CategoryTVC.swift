@@ -141,8 +141,12 @@ class CategoryTVC: UITableViewController {
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
+        if editingStyle == .delete
+        {
+            deleteCategory(category: category[indexPath.row]) // deleting from core data file
+            saveCategory() // saving the context
+            category.remove(at: indexPath.row) // removing from the array
+        
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
