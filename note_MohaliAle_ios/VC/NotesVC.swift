@@ -18,12 +18,14 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
     
     
     
+    @IBOutlet weak var showDetail: UIBarButtonItem!
     
     
     
     
     
     
+    @IBOutlet weak var detailBtn: UIBarButtonItem!
     
     //MARK: - outlets of ther view controller
     @IBOutlet weak var showLocationBtn: UIButton!
@@ -42,8 +44,8 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var latitude:CLLocationDegrees!
-    var longitude:CLLocationDegrees!
+    var latitude:Double!
+    var longitude:Double!
     
     //MARK: crateing the variable if for selected note
     
@@ -78,6 +80,8 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
         self.noteImage.isUserInteractionEnabled = true
         self.noteImage.addGestureRecognizer(tapGesture)
 
+        let anothertap = UITapGestureRecognizer(target: self, action: #selector(dismissKey))
+        self.view.addGestureRecognizer(anothertap)
         
         showImg()
         titleTextField.text = selectedNotes?.noteTitle
@@ -87,19 +91,16 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
         
         // set the test of the button to show location if editNote is true
         if editNote == true{
-            showLocationBtn.setTitle("Show Location", for: [])
             locationBool = true
+            detailBtn.isEnabled = true
+        
         }else{
-            showLocationBtn.setTitle("Save Location", for: [])
             locationBool = false
+            detailBtn.isEnabled = false
         }
         
         
-        
-        
-        // location manager things
-        
-        
+
         // we give the delegate of locationManager to this class
         locManager.delegate = self
         
@@ -111,10 +112,78 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
         
         // start updating the location of the user
         locManager.startUpdatingLocation()
+
+    }
+    
+    
+    
+    @objc func dismissKey(gesture:UITapGestureRecognizer){
+        gesture.numberOfTapsRequired = 1
+        noteTextView.resignFirstResponder()
+    }
+    
+
+    //MARK: Location maanager function
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
         
+        latitude = location.coordinate.latitude
+        longitude = location.coordinate.longitude
+        
+        
+        
+        CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
+            if error != nil {
+                print(error!)
+            } else {
+                if let placemark = placemarks?[0] {
+                    
+                    
+                    
+                    if placemark.subThoroughfare != nil {
+                        self.address += placemark.subThoroughfare! + " "
+                    }
+                    
+                    if placemark.thoroughfare != nil {
+                        self.address += placemark.thoroughfare! + "\n"
+                    }
+                    
+                    if placemark.subLocality != nil {
+                        self.address += placemark.subLocality! + "\n"
+                    }
+                    
+                    if placemark.subAdministrativeArea != nil {
+                        self.address += placemark.subAdministrativeArea! + "\n"
+                    }
+                    
+                    if placemark.postalCode != nil {
+                        self.address += placemark.postalCode! + "\n"
+                    }
+                    
+                    if placemark.country != nil {
+                        self.address += placemark.country! + "\n"
+                    }
+                    
+                    self.addressLbl.text = self.address
+                }
+            }
+        }
         
         
     }
+    
+    
+    
+    
+    
+    @IBAction func showDetail(_ sender: Any) {
+        let alert = UIAlertController(title: "Detail ", message: address , preferredStyle: .alert)
+        let OkBtn = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(OkBtn)
+        present(alert, animated: true , completion: nil)
+    }
+    
     
     
     
@@ -128,108 +197,15 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
          
           guard noteTextView.text != "" else {return}
         guard let png = self.noteImage.image?.pngData() else {return}
-        //noteTVCInstance!.updateNote(title: selectedNotes?.noteTitle ?? "" , message: selectedNotes?.noteMessage ?? "", img: (png ), address: address , lat: selectedNotes?.noteLat ?? "", long: selectedNotes?.noteLong ?? "")
+
+        noteTVCInstance!.updateNote(title: titleTextField.text! , message: noteTextView.text, img: png, address: address, lat: latitude, long: longitude)
          
-         
-        noteTVCInstance!.updateNote(with: selectedNotes?.noteTitle ?? "", with: selectedNotes?.noteMessage ?? "")
-         // let it be commented for the time being we will check n the debug time
-        /*
-         if let png = self.getImage.image?.pngData(){
-             saveImage(at: png)
-         }
-*/
+      
  
  }
     
     
-    
-   //MARK: Show location button clicked
-    
-    @IBAction func showLocationPressed(_ sender: Any) {
-        if locationBool ==  true {
-            performSegue(withIdentifier: "mapSegue", sender: self)
-        
-        }else{
-    
 
-            //MARK: Location maanager function
-            
-            func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-                let location = locations[0]
-                
-                latitude = location.coordinate.latitude
-                longitude = location.coordinate.longitude
-                print(String(latitude))
-                
-                
-                CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
-                    if error != nil {
-                        print(error!)
-                    } else {
-                        if let placemark = placemarks?[0] {
-                            
-                            
-                            
-                            if placemark.subThoroughfare != nil {
-                                self.address += placemark.subThoroughfare! + " "
-                            }
-                            
-                            if placemark.thoroughfare != nil {
-                                self.address += placemark.thoroughfare! + "\n"
-                            }
-                            
-                            if placemark.subLocality != nil {
-                                self.address += placemark.subLocality! + "\n"
-                            }
-                            
-                            if placemark.subAdministrativeArea != nil {
-                                self.address += placemark.subAdministrativeArea! + "\n"
-                            }
-                            
-                            if placemark.postalCode != nil {
-                                self.address += placemark.postalCode! + "\n"
-                            }
-                            
-                            if placemark.country != nil {
-                                self.address += placemark.country! + "\n"
-                            }
-                            
-                            self.addressLbl.text = self.address
-                        }
-                    }
-                }
-                
-                
-            }
-            
-  
-        }
-        
-        
-    }
-    
-    
-    //MARK: Function to save location of the user and show that in the note pad
-    
-    func getLocation(){
-        
-    }
-    
-    
-    //MARK: Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-        //MARK: MAke Changes here in CLLocation 
-        
-        let destination = segue.destination as? MapVC
-       // destination?.latitude = selectedNotes?.noteLat
-       // destination?.longitude =  selectedNotes?.noteLong
-        
-    }
-    
-    
-    
     
     //MARK: showing image on load
     
@@ -242,36 +218,14 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
               }
     }
     
-    
-    // geting image from the core data
-    func getSavedImage() -> [Note]{
-        var arryOFimage = [Note]()
-        
-        let request: NSFetchRequest<Note> = Note.fetchRequest()
-        
-        do{
-            arryOFimage = try context.fetch(request)
-        }
-        catch{
-            print(error.localizedDescription)
-        }
-        
-        return arryOFimage
-        
-    }
-    
-    
+
     @objc func selectImage(gesture: UITapGestureRecognizer)
     {
         // function called form the extension
         self.openImagePicker()
         
     }
-    
-    
-    
 
-  
 
 }
 

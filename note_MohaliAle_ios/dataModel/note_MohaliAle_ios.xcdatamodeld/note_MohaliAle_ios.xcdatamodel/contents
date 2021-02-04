@@ -6,9 +6,9 @@
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
         <attribute name="noteImage" optional="YES" attributeType="Binary"/>
-        <attribute name="noteLat" optional="YES" attributeType="String"/>
+        <attribute name="noteLat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="noteLocAddress" optional="YES" attributeType="String"/>
-        <attribute name="noteLong" optional="YES" attributeType="String"/>
+        <attribute name="noteLong" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="noteMessage" optional="YES" attributeType="String"/>
         <attribute name="noteTitle" optional="YES" attributeType="String"/>
         <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="notes" inverseEntity="Category"/>
