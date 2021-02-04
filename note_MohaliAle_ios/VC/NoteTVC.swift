@@ -164,6 +164,16 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         
+        /**/
+        if let destination = segue.destination as? NotesVC {
+            destination.noteTVCInstance = self
+            
+            if let cell = sender as? UITableViewCell {
+                if let index = tableView.indexPath(for: cell)?.row {
+                    destination.selectedNotes = notes[index]
+                }
+            }
+
        
         }
    
@@ -183,3 +193,4 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
     
 
 
+}
