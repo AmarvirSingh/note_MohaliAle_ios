@@ -18,7 +18,7 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
     var selectedCategory: Category?
     {
         didSet {
-         //   loadNotes
+            loadNotes()
         }
     }
     
@@ -60,6 +60,7 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
         let note = notes[indexPath.row]
         cell.textLabel?.text = note.noteTitle
         cell.textLabel?.textColor = .lightGray
+        cell.detailTextLabel?.text = note.noteMessage
         
         let backgroundView = UIView()
         backgroundView.backgroundColor = .darkGray
@@ -73,8 +74,8 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
     //MARK: loading notes function
     func loadNotes(predicate: NSPredicate? = nil) {
         let request: NSFetchRequest<Note> = Note.fetchRequest()
-        let CategoryPredicate = NSPredicate(format: "parentFolder.name=%@", selectedCategory!.catName!)
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        let CategoryPredicate = NSPredicate(format: "parentCategory.catName = %@", selectedCategory!.catName!)
+        //request.sortDescriptors = [NSSortDescriptor(key: "noteTitle", ascending: true)]
         
         if let additionalPredicate = predicate {
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [CategoryPredicate, additionalPredicate])
@@ -99,6 +100,40 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
         context.delete(note)
     }
 
+    
+    
+    func updateNote(with title: String, with message: String){
+        notes = [] //note array empty makes easiest to rewrite notes
+        let newNote = Note(context: context)
+        newNote.noteTitle = title
+        newNote.noteMessage = message
+        newNote.parentCategory =  selectedCategory
+        
+        saveNotes()
+        
+        loadNotes()
+        
+        
+    }
+    
+    
+    func updateNote(title: String, message: String, img: Data, address: String, lat: String, long: String ){
+        notes = [] //note array empty makes easiest to rewrite notes
+        let newNote = Note(context: context)
+        newNote.noteTitle = title
+        newNote.noteImage = img
+        newNote.noteLocAddress = address
+        newNote.noteLat = lat
+        newNote.noteLong = long
+        
+        newNote.parentCategory = selectedCategory
+        
+        saveNotes()
+        
+        loadNotes()
+        
+    }
+    /*
     /// update note in core data
     /// - Parameter title: note's title
     func updateNote(with title: String) {
@@ -109,7 +144,7 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
         saveNotes()
         loadNotes()
     }
-    
+    */
     // Saving the notes into core data
     func saveNotes() {
         do {

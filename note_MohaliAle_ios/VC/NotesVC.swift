@@ -59,9 +59,10 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
     
     var locationBool: Bool = false
     
+    var address = ""
     // creating an instance of NoteTVC - noteTVCInstance
     
-    weak var noteTVCInstance : NoteTVC!
+    weak var noteTVCInstance : NoteTVC?
     
     
     override func viewDidLoad() {
@@ -120,17 +121,19 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
     //MARK: view Will disaapear
     
     override func viewWillDisappear(_ animated: Bool) {
-        /*
+        
          if editNote{
-            noteTVCInstance.deleteNote(note: selectedNotes)
+            noteTVCInstance!.deleteNote(note: selectedNotes!)
         }
          
           guard noteTextView.text != "" else {return}
-        noteTVCInstance.updateNote(title: selectedNotes?.noteTitle, message: selectedNotes?.noteMessage, img: selectedNotes?.noteImage, address: selectedNotes?.noteLocAddress, lat: selectedNotes?.noteLat, long: selectedNotes?.noteLong)
+        guard let png = self.noteImage.image?.pngData() else {return}
+        //noteTVCInstance!.updateNote(title: selectedNotes?.noteTitle ?? "" , message: selectedNotes?.noteMessage ?? "", img: (png ), address: address , lat: selectedNotes?.noteLat ?? "", long: selectedNotes?.noteLong ?? "")
          
          
+        noteTVCInstance!.updateNote(with: selectedNotes?.noteTitle ?? "", with: selectedNotes?.noteMessage ?? "")
          // let it be commented for the time being we will check n the debug time
-         
+        /*
          if let png = self.getImage.image?.pngData(){
              saveImage(at: png)
          }
@@ -156,7 +159,7 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
                 
                 latitude = location.coordinate.latitude
                 longitude = location.coordinate.longitude
-                
+                print(String(latitude))
                 
                 
                 CLGeocoder().reverseGeocodeLocation(location) { (placemarks, error) in
@@ -165,33 +168,33 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
                     } else {
                         if let placemark = placemarks?[0] {
                             
-                            var address = ""
+                            
                             
                             if placemark.subThoroughfare != nil {
-                                address += placemark.subThoroughfare! + " "
+                                self.address += placemark.subThoroughfare! + " "
                             }
                             
                             if placemark.thoroughfare != nil {
-                                address += placemark.thoroughfare! + "\n"
+                                self.address += placemark.thoroughfare! + "\n"
                             }
                             
                             if placemark.subLocality != nil {
-                                address += placemark.subLocality! + "\n"
+                                self.address += placemark.subLocality! + "\n"
                             }
                             
                             if placemark.subAdministrativeArea != nil {
-                                address += placemark.subAdministrativeArea! + "\n"
+                                self.address += placemark.subAdministrativeArea! + "\n"
                             }
                             
                             if placemark.postalCode != nil {
-                                address += placemark.postalCode! + "\n"
+                                self.address += placemark.postalCode! + "\n"
                             }
                             
                             if placemark.country != nil {
-                                address += placemark.country! + "\n"
+                                self.address += placemark.country! + "\n"
                             }
                             
-                            self.addressLbl.text = address
+                            self.addressLbl.text = self.address
                         }
                     }
                 }

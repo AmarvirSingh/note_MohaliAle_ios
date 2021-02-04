@@ -6,7 +6,7 @@
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
         <attribute name="noteImage" optional="YES" attributeType="Binary"/>
-        <attribute name="noteLat" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="noteLat" optional="YES" attributeType="String"/>
         <attribute name="noteLocAddress" optional="YES" attributeType="String"/>
         <attribute name="noteLong" optional="YES" attributeType="String"/>
         <attribute name="noteMessage" optional="YES" attributeType="String"/>
