@@ -109,6 +109,18 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
         saveNotes()
         loadNotes()
     }
+    
+    // Saving the notes into core data
+    func saveNotes() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving the notes \(error.localizedDescription)")
+        }
+    }
+    
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
