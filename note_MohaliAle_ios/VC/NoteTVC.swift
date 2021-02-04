@@ -98,6 +98,17 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
     func deleteNote(note: Note) {
         context.delete(note)
     }
+
+    /// update note in core data
+    /// - Parameter title: note's title
+    func updateNote(with title: String) {
+        notes = [] //note array empty makes easiest to rewrite notes
+        let newNote = Note(context: context)
+        newNote.noteTitle = title
+        newNote.parentCategory = selectedCategory
+        saveNotes()
+        loadNotes()
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
