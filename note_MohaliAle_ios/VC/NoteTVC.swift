@@ -159,8 +159,17 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
         }
     }
     
-    
+    //Trash Button Functionality
     @IBAction func trashBTNPress(_ sender: UIBarButtonItem) {
+        if let indexPaths = tableView.indexPathsForSelectedRows {
+            let rows = (indexPaths.map {$0.row}).sorted(by: >)
+            
+            let _ = rows.map {deleteNote(note: notes[$0])}
+            let _ = rows.map {notes.remove(at: $0)}
+            
+            tableView.reloadData()
+            saveNotes()
+        }
     }
     
     
