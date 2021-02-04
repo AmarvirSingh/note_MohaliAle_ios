@@ -122,7 +122,7 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
     }
     
     
-    func updateNote(title: String, message: String, img: Data, address: String, lat: Date, long: String ){
+    func updateNote(title: String, message: String, img: Data, address: String, lat: Date, long: String ){ //Error retified in this line
         notes = [] //note array empty makes easiest to rewrite notes
         let newNote = Note(context: context)
         newNote.noteTitle = title
