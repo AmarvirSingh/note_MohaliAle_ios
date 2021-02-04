@@ -33,8 +33,6 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var addressLbl: UILabel!
     
     
-    
-    
     let imagePicker = UIImagePickerController()
     
 
@@ -51,7 +49,7 @@ class NotesVC: UIViewController, CLLocationManagerDelegate {
     
     var selectedNotes : Note?{
         didSet{
-            //editNote = true
+            editNote = true
         }
     }
     

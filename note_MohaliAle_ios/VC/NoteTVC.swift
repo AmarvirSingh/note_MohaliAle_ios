@@ -13,6 +13,11 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var TrashBTN: UIBarButtonItem!
     @IBOutlet weak var moveBTN: UIBarButtonItem!
+   
+    
+  var editEnabled: Bool = false
+  
+
     // CREATE notes
     var notes = [Note]()
     var selectedCategory: Category?
@@ -158,7 +163,16 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
     @IBAction func trashBTNPress(_ sender: UIBarButtonItem) {
     }
     
+    
+    ///when edit button is pressed below functionaly will be implemented
+    /// - Parameter Sender : Bar button
     @IBAction func editBTNPress(_ sender: UIBarButtonItem) {
+        editEnabled = !editEnabled
+       
+        TrashBTN.isEnabled = true
+        moveBTN.isEnabled = true
+        
+        tableView.setEditing(editEnabled, animated: true)
     }
     /*
     // Override to support conditional editing of the table view.
