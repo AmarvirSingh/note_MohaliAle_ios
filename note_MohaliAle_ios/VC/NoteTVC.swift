@@ -155,7 +155,11 @@ class NoteTVC: UITableViewController, UISearchBarDelegate {
     }
     
     
+    @IBAction func trashBTNPress(_ sender: UIBarButtonItem) {
+    }
     
+    @IBAction func editBTNPress(_ sender: UIBarButtonItem) {
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
